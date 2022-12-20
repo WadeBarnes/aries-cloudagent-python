@@ -35,6 +35,7 @@ class TestMain(TestCase):
 
             mock_import.assert_called_once()
             self.assertEqual(mock_import.call_args[0][0], "ptvsd")
+            
             mock_import.return_value.enable_attach.assert_called_once()
             mock_import.return_value.wait_for_attach.assert_called_once()
 
