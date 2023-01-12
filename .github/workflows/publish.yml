@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.7', '3.8', '3.9', '3.10']
+        python-version: ['3.8', '3.9']
 
     name: Publish
     runs-on: ubuntu-latest
@@ -29,6 +29,7 @@ jobs:
         id: info
         run: |
           echo "::set-output name=repo-owner::${GITHUB_REPOSITORY_OWNER,,}"
+          # echo "repo-owner=${GITHUB_REPOSITORY_OWNER,,} >> $GITHUB_OUTPUT"
 
       - name: Cache Docker layers
         uses: actions/cache@v3
@@ -66,7 +67,7 @@ jobs:
           images: |
             ghcr.io/${{ steps.info.outputs.repo-owner }}/aries-cloudagent-python
           tags: |
-            type=semver,pattern=py${{ matrix.python-version }}-{{version}}
+            type=semver,pattern=py${{ matrix.python-version }}-{{ version }}
 
       - name: Build and Push Image to ghcr.io
         uses: docker/build-push-action@v3
