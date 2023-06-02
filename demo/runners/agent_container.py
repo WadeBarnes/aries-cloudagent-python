@@ -1032,13 +1032,13 @@ class AgentContainer:
         terminated = True
         try:
             if self.endorser_agent:
-                log_msg("Shutting down endorser agent ...")
+                log_msg(f"Shutting down endorser agent; {self.endorser_agent.label} ...")
                 await self.endorser_agent.terminate()
             if self.mediator_agent:
-                log_msg("Shutting down mediator agent ...")
+                log_msg(f"Shutting down mediator agent; {self.mediator_agent.label} ...")
                 await self.mediator_agent.terminate()
             if self.agent:
-                log_msg("Shutting down agent ...")
+                log_msg(f"Shutting down agent; {self.agent.label} ...")
                 await self.agent.terminate()
         except Exception:
             LOGGER.exception("Error terminating agent:")
