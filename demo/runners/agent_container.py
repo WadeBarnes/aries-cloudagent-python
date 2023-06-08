@@ -39,7 +39,7 @@ CRED_PREVIEW_TYPE = "https://didcomm.org/issue-credential/2.0/credential-preview
 SELF_ATTESTED = os.getenv("SELF_ATTESTED")
 TAILS_FILE_COUNT = int(os.getenv("TAILS_FILE_COUNT", 100))
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
 
 
