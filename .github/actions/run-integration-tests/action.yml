@@ -25,7 +25,7 @@ runs:
       env:
         LEDGER_URL: ${{ inputs.IN_LEDGER_URL }}
         PUBLIC_TAILS_URL: ${{ inputs.IN_PUBLIC_TAILS_URL }}
-        LOG_LEVEL: warning
+        LOG_LEVEL: debug
         NO_TTY: "1"
       working-directory: acapy/demo
 branding:

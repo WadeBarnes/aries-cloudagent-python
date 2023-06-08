@@ -1316,6 +1316,9 @@ async def start_mediator_agent(
         genesis_data=genesis,
         genesis_txn_list=genesis_txn_list,
     )
+
+    log_msg(f"Starting mediator; {mediator_agent.label} ...")
+
     await mediator_agent.listen_webhooks(start_port + 2)
     await mediator_agent.start_process()
 
