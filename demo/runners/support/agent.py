@@ -710,16 +710,31 @@ class DemoAgent:
         if python_path:
             my_env["PYTHONPATH"] = python_path
 
+
+        self.log("Starting process ...")
         agent_args = self.get_process_args()
         self.log(agent_args)
 
         # start agent sub-process
+        self.log("Getting event loop ...")
         loop = asyncio.get_event_loop()
+        self.log("Getting executor ...")
         future = loop.run_in_executor(None, self._process, agent_args, my_env, loop)
+        self.log("Waiting for process to start ...")
         self.proc = await asyncio.wait_for(future, 20, loop=loop)
         if wait:
+            self.log("Waiting for process ...")
             await asyncio.sleep(1.0)
+            self.log("Detecting process ...")
             await self.detect_process()
+
+        self.log("Process started ...")
+
+
+
+
+
+
 
     def _terminate(self):
         if self.proc and self.proc.poll() is None:
