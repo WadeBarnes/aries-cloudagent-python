@@ -13,8 +13,4 @@ Feature: RFC 0160 Aries agent connection functions
 
       Examples:
          | Acme_capabilities                      | Bob_capabilities          |
-         | --public-did                           |                           |
-         | --public-did --did-exchange            | --did-exchange            |
          | --public-did --mediation               | --mediation               |
-         | --public-did --multitenant             | --multitenant             |
-         | --public-did --mediation --multitenant | --mediation --multitenant |

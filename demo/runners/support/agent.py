@@ -714,12 +714,15 @@ class DemoAgent:
         self.log("Starting process ...")
         agent_args = self.get_process_args()
         self.log(agent_args)
+        self.log(my_env)
 
         # start agent sub-process
         self.log("Getting event loop ...")
         loop = asyncio.get_event_loop()
+        self.log(loop)
         self.log("Getting executor ...")
         future = loop.run_in_executor(None, self._process, agent_args, my_env, loop)
+        self.log(future)
         self.log("Waiting for process to start ...")
         self.proc = await asyncio.wait_for(future, 20, loop=loop)
         if wait:
